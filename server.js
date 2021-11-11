@@ -12,6 +12,7 @@ app.get("/", (req, res) => {
 
 app.post("/add", (req, res) => {
     const { a, b } = req.body;
+    const result=0;
     res.send({
         result: parseInt(a) + parseInt(b)
     });
