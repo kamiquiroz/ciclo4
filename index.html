@@ -16,7 +16,6 @@
         <input id="num2" type="number">
 
         <input type="submit" value="Add">
-
     </form>
 
     <div class="result">Click add!</div>
@@ -25,7 +24,7 @@
         document.addEventListener("submit", sendData);
     
         function sendData(e) {
-            console.log("entro aqui");
+            
             e.preventDefault();
             const a = document.querySelector("#num1").value;
             const b = document.querySelector("#num2").value;
@@ -41,15 +40,17 @@
                             b: parseInt(b)
                         })
             };
-    
-            fetch("http://localhost:5000/add",options)
-            .then(res => res.json())
-            .then( data => {})
+           
+            fetch("http://localhost:5000/add", options)
+            .then(response => response.json())
+            .then( data => {
+                const {result} = data;
+                document.querySelector(".result").innerText = `The sum is: ${result}`;
+            })
             .catch(err => console.log(err));
     
             
         }
-        
     </script>
 </body>
 </html>
